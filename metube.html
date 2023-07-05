@@ -6,6 +6,7 @@
             MeTube.com
         </title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="server/getApi.js"></script>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +15,7 @@
         <link rel="stylesheet" href="styles/general.css">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/video.css">
+        <link rel="stylesheet" href="styles/sidebar.css">
 
     </head>
 
@@ -36,35 +38,31 @@
             </div>
         </div>
 
-        <div id="video-grid">
-
-            <div class="video-preview">
-               <!--  <div>
-                    <video width="400" controls>
-                        <source
-                            src="https://uploads.overwolf.com/owclient/discord/2023/06/05/08d7b8bb-9100-4f02-a55c-da3142be9f53.mp4"
-                            type="video/mp4">
-                        Your browser does not support HTML video.
-                    </video>
-                </div>
-                <div class="video-info-grid">
-                    <div class="channel-picture">
-                        <img class="profile-picture" src="assests/images/channel.jpg">
-                    </div>
-                    <div class="video-info">
-                        <p class="video-title">
-                            Su hien dien cua HM
-                        </p>
-                        <p class="video-author">
-                            Hoang Minh Nguyen
-                        </p>
-                        <p class="video-stats">
-                            11 views 1 year ago
-                    </div>
-                </div>-->
-                <script src="getAllApi.js"></script>
+        <nav class = "sidebar">
+            <div class = "sidebar-game">
+                <button class = "game-button" type="button">
+                    <img src="assests/images/LoL_icon.svg.png">
+                </button>
             </div>
-        </div>
+            <div class = "sidebar-game">
+                <button class = "game-button" type="button" onclick= "getAllVideoByGame('csgo')">
+                    <img src="assests/images/CSGO.png">
+                    
+                </button>
+            </div>
+            <div class = "sidebar-game">
+                <button class = "game-button" type="button">
+                    <img src="assests/images/valorant-icon.png">
+                </button>
+            </div>
+        </nav>
+
+        <main>
+            <section id="video-grid" class="video-grid">
+                <script>getAllVideo()</script>
+            </section>
+        </main>
+        
 
     </body>
 

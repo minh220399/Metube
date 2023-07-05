@@ -8,9 +8,9 @@ const app = express();
 
 // Config your database credential
 var connection = mysql.createConnection({
-    host: "chua-ka-lowlight.c3yksf1qugnn.us-east-2.rds.amazonaws.com",
+    host: "fake",
     user: "admin",
-    password: "minh220399",
+    password: "fake",
     port: "3306",
 })
 
@@ -27,6 +27,8 @@ connection.connect(function (err) {
 });
 
 app.get("/videos", (req, res) =>{
+    console.log("GET /videos");
+
     connection.query('SELECT * FROM ChuaKa.video_info;', function (err, result,fields) {
         if (err)
         {
@@ -34,23 +36,15 @@ app.get("/videos", (req, res) =>{
                 return;
         }
         var length = Object.keys(result).length;
-        console.log(result[0].Tilte);
-        console.log(length);
-        
         var respone = [] ;
 
-        // let obj =
-        // {
-        //     title: result[0].Tilte,
-        //     link: result[0].Link
-        // };
+
         for (var i = 0; i < length; i++)
         {
             var obj = {
                 title: result[i].Title,
                 link: result[i].Link
             };
-            console.log(respone);
             respone.push(obj);
             
         }
@@ -59,6 +53,32 @@ app.get("/videos", (req, res) =>{
     });
 });
 
+app.get("/videosByGame/:game", (req, res) =>{
+    var game = req.params.game;
+    console.log("GET /videosByGame/" + game);
+
+    connection.query(" SELECT * FROM ChuaKa.video_info where game = '" + game + "'", function (err, result,fields) {
+        if (err)
+        {
+            console.error("fail to query" + err.stack);
+                return;
+        }
+        var length = Object.keys(result).length;
+        var respone = [] ;
+
+        for (var i = 0; i < length; i++)
+        {
+            var obj = {
+                title: result[i].Title,
+                link: result[i].Link
+            };
+            respone.push(obj);
+            
+        }
+        res.json(respone);
+
+    });
+});
 
 app.listen(8080, () => {
     console.log("listening on port 8080");

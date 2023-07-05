@@ -1,0 +1,42 @@
+.sidebar
+{
+    position: fixed;
+    left: 0;
+    top: 56px;
+    bottom: 0;
+    border-color: black;
+    width: 80px;
+    padding-top: 5px;
+    z-index: 200;
+}
+
+.sidebar-game {
+    height: 74px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 50px;
+
+  }
+  
+
+  .sidebar-game img {
+    height: 45px;
+    width: 45px;
+  }
+  
+  .game-button
+  {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    transition: transform 0.7s ease-in-out;
+
+  }
+
+  .game-button:hover {
+    transform: rotate(360deg);
+  }
