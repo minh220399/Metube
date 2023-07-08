@@ -8,6 +8,7 @@
     width: 80px;
     padding-top: 5px;
     z-index: 200;
+    margin-top: 10px;
 }
 
 .sidebar-game {
@@ -17,7 +18,7 @@
     align-items: center;
     flex-direction: column;
     cursor: pointer;
-    margin-top: 50px;
+    margin-bottom: 50px;
 
   }
   

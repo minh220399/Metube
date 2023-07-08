@@ -26,33 +26,23 @@
     border-bottom-color: rgb(228, 228, 228);
 }
 
-.hamberger-menu
-{
-    height: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    
-}
-
 .youtube-logo
 {
     height: 20px;
 }
 .left-section
 {
-    width: 200px ;
+    width: 300px ;
 }
 
 .right-section
 {
-    background-color: pink;
-    width: 200px;
+    width: 300px;
 }
 
 .middle-section
 {
     display: flex;
-
     background-color: aqua;
     flex: 1;
     margin-left: 70px;
@@ -72,4 +62,40 @@
 {
     height: 25px;
     margin-top: 4px;
+}
+
+.home-button
+{
+    border: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 60%;
+    cursor: pointer;
+}
+
+.home-button:hover 
+{
+    background-color: rgb(235, 235, 235);
+}
+
+.hamberger-menu,
+.upload-icon
+{
+    height: 30px;
+    margin-left: 25px;
+    margin-right: 20px;
+    
+}
+
+.upload-button
+{
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    top: 15px;
+    right: 28px;
+    width: 280px;
 }

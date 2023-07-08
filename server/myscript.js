@@ -1,30 +1,8 @@
-
-// Requiring modules
-const mysql = require("mysql");
-const express = require("express");
+import { connectToDb } from "./connectToDb.js";
+import express from 'express';
 const app = express();
-// Get request
 
-
-// Config your database credential
-var connection = mysql.createConnection({
-    host: "fake",
-    user: "admin",
-    password: "fake",
-    port: "3306",
-})
-
-
-
-// Connect to your database
-connection.connect(function (err) {
-    if(err)
-    {
-        console.error("fail to connect" + err.stack);
-        return;
-    }
-    console.log("Connected to database");
-});
+var connection = connectToDb();
 
 app.get("/videos", (req, res) =>{
     console.log("GET /videos");
@@ -43,7 +21,9 @@ app.get("/videos", (req, res) =>{
         {
             var obj = {
                 title: result[i].Title,
-                link: result[i].Link
+                link: result[i].Link,
+                game: result[i].game
+
             };
             respone.push(obj);
             
@@ -70,7 +50,8 @@ app.get("/videosByGame/:game", (req, res) =>{
         {
             var obj = {
                 title: result[i].Title,
-                link: result[i].Link
+                link: result[i].Link,
+                game: result[i].game
             };
             respone.push(obj);
             
