@@ -1,4 +1,24 @@
 
+function getImageSrc(pov) {
+    switch (pov) {
+        case "hm":
+            return "assests/images/HM.webp";
+        case "phong":
+            return "assests/images/Phong.webp";
+        case "den":
+            return "assests/images/Den.webp";
+        case "chua":
+            return "assests/images/Chua.webp";
+        case "thang":
+            return "assests/images/Thang.webp";
+        case "Khoi":
+            return "assests/images/Khoi.webp";
+        case "hoang":
+            return "assests/images/Hoang.webp";
+        case "unknown":
+            return "assests/images/Unknown.webp";
+    }
+}
 function getAllVideo() {
     const grid = document.getElementById('video-grid')
     $.get("http://localhost:8080/videos", (data, status) => {
@@ -13,18 +33,31 @@ function getAllVideo() {
             video.type = "video/mp4";
             video.controls = true
             video.width = 450;
-            video.height = 300;
+            video.height = 250;
             video_div.appendChild(video);
 
 
             const video_info_div = document.createElement('div');
             video_info_div.className = "video-info-grid";
+            video_info_div.style.display = "flex";
+            video_info_div.style.flexDirection = "row";
 
+            const pov_div = document.createElement('div');
+            pov_div.className = "pov_div";
+            const pov_img = document.createElement('img');
+            pov_img.className = "pov_img";
+            pov_img.src = getImageSrc(data[i].pov);
+            pov_div.appendChild(pov_img);
+
+            const title_div = document.createElement('div');
             const title = document.createElement('p');
             title.className = "video-title";
             const text = document.createTextNode(data[i].title);
             title.appendChild(text);
-            video_info_div.appendChild(title);
+            title_div.appendChild(title);
+
+            video_info_div.appendChild(pov_div);
+            video_info_div.appendChild(title_div);
 
 
             box.appendChild(video_div);
@@ -34,29 +67,8 @@ function getAllVideo() {
         }
     });
 }
-function reloadPage() {
-    (() => {
-        if (window.localStorage) {
 
-            // If there is no item as 'reload'
-            // in localstorage then create one &
-            // reload the page
-            if (!localStorage.getItem('reload')) {
-                localStorage['reload'] = true;
-                window.location.reload();
-            } else {
-
-                // If there exists a 'reload' item
-                // then clear the 'reload' item in
-                // local storage
-                localStorage.removeItem('reload');
-            }
-        }
-    })()
-}
-
-function getAllVideoByGame(game) 
-{
+function getAllVideoByGame(game) {
     if (game == "csgo") {
         const vid1 = document.querySelectorAll('.valorant');
         vid1.forEach(vid => {
@@ -110,7 +122,6 @@ function getAllVideoByGame(game)
 
 }
 
-function homePage()
-{
+function homePage() {
     location.reload();
 }
