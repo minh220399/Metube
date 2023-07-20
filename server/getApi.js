@@ -21,7 +21,7 @@ function getImageSrc(pov) {
 }
 function getAllVideo() {
     const grid = document.getElementById('video-grid')
-    $.get("http://192.168.2.14:8080/videos", (data, status) => {
+    $.get("https://server-chuaka.onrender.com:8080/videos", (data, status) => {
         var length = Object.keys(data).length;
         for (var i = 0; i < length; i++) {
             const box = document.createElement('div');
